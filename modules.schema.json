@@ -1,142 +1,38 @@
-[{
-  "$id": "http://json-schema.org/draft-04/schema#",
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "additionalProperties": false,
   "definitions": {
-    "Syde::SNS::Topic::MODULE": {
-      "additionalProperties": false,
+    "Syde_SNS_Topic_MODULE": {
+      "type": "object",
       "properties": {
-        "Condition": {
-          "type": "string"
-        },
-        "DependsOn": {
-          "anyOf": [
-            {
-              "pattern": "^[a-zA-Z0-9]+$",
-              "type": "string"
-            },
-            {
-              "items": {
-                "pattern": "^[a-zA-Z0-9]+$",
-                "type": "string"
-              },
-              "type": "array"
-            }
-          ]
-        },
-        "Metadata": {
-          "type": "object"
-        },
-        "Properties": {
-          "additionalProperties": false,
-          "properties": {
-            "TopicName": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "TopicName"
-          ],
-          "type": "object"
-        },
         "Type": {
-          "enum": [
-            "Syde::SNS::Topic::MODULE"
-          ],
           "type": "string"
+        },
+        "Value": {
+          "type": "number"
         }
       },
       "required": [
         "Type",
-        "Properties"
-      ],
-      "type": "object"
-    }
-  },
-  "properties": {
-    "AWSTemplateFormatVersion": {
-      "enum": [
-        "2010-09-09"
-      ],
-      "type": "string"
-    },
-    "Conditions": {
-      "additionalProperties": false,
-      "patternProperties": {
-        "^[a-zA-Z0-9]+$": {
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "Description": {
-      "description": "Template description",
-      "maxLength": 1024,
-      "type": "string"
-    },
-    "Mappings": {
-      "additionalProperties": false,
-      "patternProperties": {
-        "^[a-zA-Z0-9]+$": {
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "Metadata": {
-      "type": "object"
-    },
-    "Outputs": {
-      "additionalProperties": false,
-      "maxProperties": 60,
-      "minProperties": 1,
-      "patternProperties": {
-        "^[a-zA-Z0-9]+$": {
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "Parameters": {
-      "additionalProperties": false,
-      "maxProperties": 50,
-      "patternProperties": {
-        "^[a-zA-Z0-9]+$": {
-          "$ref": "#/definitions/Parameter"
-        }
-      },
-      "type": "object"
-    },
-    "Resources": {
-      "additionalProperties": false,
-      "patternProperties": {
-        "^[a-zA-Z0-9]+$": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Syde::SNS::Topic::MODULE"
-            }
-          ]
-        }
-      },
-      "type": "object"
-    },
-    "Transform": {
-      "oneOf": [
-        {
-          "type": [
-            "string"
-          ]
-        },
-        {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        }
+        "Value"
       ]
     }
   },
-  "required": [
-    "Resources"
-  ],
-  "type": "object"
-}]
+  "type": "object",
+  "properties": {
+    "Resources": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/Syde_SNS_Topic_MODULE"
+          }
+        ]
+      },
+      "patternProperties": {
+        "^[a-zA-Z0-9]+$": {}
+      }
+    }
+  },
+  "required": ["Resources"]
+}
