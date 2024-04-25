@@ -49,6 +49,7 @@ data["definitions"]["Syde::SQS::Queue::MODULE"] = {
       "Properties": {
         "additionalProperties": False,
         "type": "object",
+        "description": "Preview Name of SQS. \n- PreviewName: `String`. \n- DelaySeconds: `Number`",
         "properties": {
             "PreviewName": {
               "type": "string",
