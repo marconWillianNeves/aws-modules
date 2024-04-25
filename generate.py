@@ -110,5 +110,5 @@ data["properties"]["Resources"]["patternProperties"]["^[a-zA-Z0-9]+$"]["anyOf"].
 })
 
 # Step 4: Save the modified data
-with open('cloudformation-with-syde-modules.schema.json', 'w') as f:
+with open('cloudformation-with-syde-modules-v2.schema.json', 'w') as f:
     json.dump(data, f, indent=4)
