@@ -143,10 +143,7 @@
                           "type": "object"
                       },
                       "DeliveryStatusLogging": {
-                          "items": {
-                              "$ref": "#/definitions/AWS::SNS::Topic.LoggingConfig"
-                          },
-                          "type": "array"
+                        "type": "string"
                       },
                       "DisplayName": {
                           "type": "string"
@@ -164,10 +161,7 @@
                         "type": "string"
                       },
                       "Tags": {
-                          "items": {
-                              "$ref": "#/definitions/Tag"
-                          },
-                          "type": "array"
+                        "type": "string"
                       },
                       "TopicName": {
                           "type": "string"
@@ -417,10 +411,7 @@
                           "type": "boolean"
                       },
                       "Tags": {
-                          "items": {
-                              "$ref": "#/definitions/Tag"
-                          },
-                          "type": "array"
+                        "type": "string"
                       },
                       "VisibilityTimeout": {
                           "type": "number"
@@ -439,6 +430,99 @@
                       "Delete",
                       "Retain",
                       "Snapshot"
+                  ],
+                  "type": "string"
+              }
+          },
+          "required": [
+              "Type"
+          ],
+          "type": "object"
+      },
+      "Parameter": {
+          "additionalProperties": false,
+          "properties": {
+              "AllowedPattern": {
+                  "type": "string"
+              },
+              "AllowedValues": {
+                  "type": "array"
+              },
+              "ConstraintDescription": {
+                  "type": "string"
+              },
+              "Default": {
+                  "type": "string"
+              },
+              "Description": {
+                  "type": "string"
+              },
+              "MaxLength": {
+                  "type": "string"
+              },
+              "MaxValue": {
+                  "type": "string"
+              },
+              "MinLength": {
+                  "type": "string"
+              },
+              "MinValue": {
+                  "type": "string"
+              },
+              "NoEcho": {
+                  "type": [
+                      "string",
+                      "boolean"
+                  ]
+              },
+              "Type": {
+                  "enum": [
+                      "String",
+                      "Number",
+                      "List\u003cNumber\u003e",
+                      "CommaDelimitedList",
+                      "AWS::EC2::AvailabilityZone::Name",
+                      "AWS::EC2::Image::Id",
+                      "AWS::EC2::Instance::Id",
+                      "AWS::EC2::KeyPair::KeyName",
+                      "AWS::EC2::SecurityGroup::GroupName",
+                      "AWS::EC2::SecurityGroup::Id",
+                      "AWS::EC2::Subnet::Id",
+                      "AWS::EC2::Volume::Id",
+                      "AWS::EC2::VPC::Id",
+                      "AWS::Route53::HostedZone::Id",
+                      "List\u003cAWS::EC2::AvailabilityZone::Name\u003e",
+                      "List\u003cAWS::EC2::Image::Id\u003e",
+                      "List\u003cAWS::EC2::Instance::Id\u003e",
+                      "List\u003cAWS::EC2::SecurityGroup::GroupName\u003e",
+                      "List\u003cAWS::EC2::SecurityGroup::Id\u003e",
+                      "List\u003cAWS::EC2::Subnet::Id\u003e",
+                      "List\u003cAWS::EC2::Volume::Id\u003e",
+                      "List\u003cAWS::EC2::VPC::Id\u003e",
+                      "List\u003cAWS::Route53::HostedZone::Id\u003e",
+                      "List\u003cString\u003e",
+                      "AWS::SSM::Parameter::Name",
+                      "AWS::SSM::Parameter::Value\u003cString\u003e",
+                      "AWS::SSM::Parameter::Value\u003cList\u003cString\u003e\u003e",
+                      "AWS::SSM::Parameter::Value\u003cCommaDelimitedList\u003e",
+                      "AWS::SSM::Parameter::Value\u003cAWS::EC2::AvailabilityZone::Name\u003e",
+                      "AWS::SSM::Parameter::Value\u003cAWS::EC2::Image::Id\u003e",
+                      "AWS::SSM::Parameter::Value\u003cAWS::EC2::Instance::Id\u003e",
+                      "AWS::SSM::Parameter::Value\u003cAWS::EC2::SecurityGroup::GroupName\u003e",
+                      "AWS::SSM::Parameter::Value\u003cAWS::EC2::SecurityGroup::Id\u003e",
+                      "AWS::SSM::Parameter::Value\u003cAWS::EC2::Subnet::Id\u003e",
+                      "AWS::SSM::Parameter::Value\u003cAWS::EC2::Volume::Id\u003e",
+                      "AWS::SSM::Parameter::Value\u003cAWS::EC2::VPC::Id\u003e",
+                      "AWS::SSM::Parameter::Value\u003cAWS::Route53::HostedZone::Id\u003e",
+                      "AWS::SSM::Parameter::Value\u003cList\u003cAWS::EC2::AvailabilityZone::Name\u003e\u003e",
+                      "AWS::SSM::Parameter::Value\u003cList\u003cAWS::EC2::Image::Id\u003e\u003e",
+                      "AWS::SSM::Parameter::Value\u003cList\u003cAWS::EC2::Instance::Id\u003e\u003e",
+                      "AWS::SSM::Parameter::Value\u003cList\u003cAWS::EC2::SecurityGroup::GroupName\u003e\u003e",
+                      "AWS::SSM::Parameter::Value\u003cList\u003cAWS::EC2::SecurityGroup::Id\u003e\u003e",
+                      "AWS::SSM::Parameter::Value\u003cList\u003cAWS::EC2::Subnet::Id\u003e\u003e",
+                      "AWS::SSM::Parameter::Value\u003cList\u003cAWS::EC2::Volume::Id\u003e\u003e",
+                      "AWS::SSM::Parameter::Value\u003cList\u003cAWS::EC2::VPC::Id\u003e\u003e",
+                      "AWS::SSM::Parameter::Value\u003cList\u003cAWS::Route53::HostedZone::Id\u003e\u003e"
                   ],
                   "type": "string"
               }
