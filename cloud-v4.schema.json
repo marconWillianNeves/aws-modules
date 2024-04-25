@@ -161,10 +161,7 @@
                           "type": "string"
                       },
                       "Subscription": {
-                          "items": {
-                              "$ref": "#/definitions/AWS::SNS::Topic.Subscription"
-                          },
-                          "type": "array"
+                        "type": "string"
                       },
                       "Tags": {
                           "items": {
