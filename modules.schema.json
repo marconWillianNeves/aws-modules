@@ -1,38 +1,172 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$id": "http://json-schema.org/draft-04/schema#",
   "additionalProperties": false,
   "definitions": {
-    "Syde_SNS_Topic_MODULE": {
-      "type": "object",
-      "properties": {
-        "Type": {
-          "type": "string"
+    "AWS::SNS::Topic::MODULE": {
+        "additionalProperties": false,
+        "properties": {
+            "Condition": {
+                "type": "string"
+            },
+            "Metadata": {
+                "type": "object"
+            },
+            "Properties": {
+                "additionalProperties": false,
+                "properties": {
+                    "TopicName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Type": {
+                "enum": [
+                    "AWS::SNS::Topic::MODULE"
+                ],
+                "type": "string"
+            },
+            "UpdateReplacePolicy": {
+                "enum": [
+                    "Delete",
+                    "Retain",
+                    "Snapshot"
+                ],
+                "type": "string"
+            }
         },
-        "Value": {
-          "type": "number"
-        }
-      },
-      "required": [
-        "Type",
-        "Value"
-      ]
+        "required": [
+            "Type"
+        ],
+        "type": "object"
+    },
+    "AWS::SQS::Queue::MODULE": {
+        "additionalProperties": false,
+        "properties": {
+            "Condition": {
+                "type": "string"
+            },
+            "Metadata": {
+                "type": "object"
+            },
+            "Properties": {
+                "additionalProperties": false,
+                "properties": {
+                    "TopicName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Type": {
+                "enum": [
+                    "AWS::SQS::Queue::MODULE"
+                ],
+                "type": "string"
+            },
+            "UpdateReplacePolicy": {
+                "enum": [
+                    "Delete",
+                    "Retain",
+                    "Snapshot"
+                ],
+                "type": "string"
+            }
+        },
+        "required": [
+            "Type"
+        ],
+        "type": "object"
     }
   },
-  "type": "object",
   "properties": {
-    "Resources": {
-      "type": "object",
-      "additionalProperties": {
-        "anyOf": [
-          {
-            "$ref": "#/definitions/Syde_SNS_Topic_MODULE"
-          }
-        ]
+      "AWSTemplateFormatVersion": {
+          "enum": [
+              "2010-09-09"
+          ],
+          "type": "string"
       },
-      "patternProperties": {
-        "^[a-zA-Z0-9]+$": {}
+      "Conditions": {
+          "additionalProperties": false,
+          "patternProperties": {
+              "^[a-zA-Z0-9]+$": {
+                  "type": "object"
+              }
+          },
+          "type": "object"
+      },
+      "Description": {
+          "description": "Template description",
+          "maxLength": 1024,
+          "type": "string"
+      },
+      "Mappings": {
+          "additionalProperties": false,
+          "patternProperties": {
+              "^[a-zA-Z0-9]+$": {
+                  "type": "object"
+              }
+          },
+          "type": "object"
+      },
+      "Metadata": {
+          "type": "object"
+      },
+      "Outputs": {
+          "additionalProperties": false,
+          "maxProperties": 60,
+          "minProperties": 1,
+          "patternProperties": {
+              "^[a-zA-Z0-9]+$": {
+                  "type": "object"
+              }
+          },
+          "type": "object"
+      },
+      "Parameters": {
+          "additionalProperties": false,
+          "maxProperties": 50,
+          "patternProperties": {
+              "^[a-zA-Z0-9]+$": {
+                  "$ref": "#/definitions/Parameter"
+              }
+          },
+          "type": "object"
+      },
+      "Resources": {
+          "additionalProperties": false,
+          "patternProperties": {
+              "^[a-zA-Z0-9]+$": {
+                  "anyOf": [
+                    {
+                        "$ref": "#/definitions/AWS::SNS::Topic::MODULE"
+                    },
+                    {
+                        "$ref": "#/definitions/AWS::SQS::Queue::MODULE"
+                    }
+                  ]
+              }
+          },
+          "type": "object"
+      },
+      "Transform": {
+          "oneOf": [
+              {
+                  "type": [
+                      "string"
+                  ]
+              },
+              {
+                  "items": {
+                      "type": "string"
+                  },
+                  "type": "array"
+              }
+          ]
       }
-    }
   },
-  "required": ["Resources"]
+  "required": [
+      "Resources"
+  ],
+  "type": "object"
 }
