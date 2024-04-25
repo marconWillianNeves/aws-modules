@@ -2,7 +2,7 @@
   "$id": "http://json-schema.org/draft-04/schema#",
   "additionalProperties": false,
   "definitions": {
-    "AWS::SNS::Topic::MODULE": {
+    "Syde::SNS::Topic::MODULE": {
         "additionalProperties": false,
         "properties": {
             "Condition": {
@@ -22,7 +22,7 @@
             },
             "Type": {
                 "enum": [
-                    "AWS::SNS::Topic::MODULE"
+                    "Syde::SNS::Topic::MODULE"
                 ],
                 "type": "string"
             },
@@ -40,7 +40,7 @@
         ],
         "type": "object"
     },
-    "AWS::SQS::Queue::MODULE": {
+    "Syde::SQS::Queue::MODULE": {
         "additionalProperties": false,
         "properties": {
             "Condition": {
@@ -60,7 +60,7 @@
             },
             "Type": {
                 "enum": [
-                    "AWS::SQS::Queue::MODULE"
+                    "Syde::SQS::Queue::MODULE"
                 ],
                 "type": "string"
             },
@@ -139,10 +139,10 @@
               "^[a-zA-Z0-9]+$": {
                   "anyOf": [
                     {
-                        "$ref": "#/definitions/AWS::SNS::Topic::MODULE"
+                        "$ref": "#/definitions/Syde::SNS::Topic::MODULE"
                     },
                     {
-                        "$ref": "#/definitions/AWS::SQS::Queue::MODULE"
+                        "$ref": "#/definitions/Syde::SQS::Queue::MODULE"
                     }
                   ]
               }
