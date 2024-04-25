@@ -47,6 +47,7 @@ data["definitions"]["Syde::SQS::Queue::MODULE"] = {
           "type": "string"
       },
       "Properties": {
+        "additionalProperties": False,
         "type": "object",
         "properties": {
             "PreviewName": {
