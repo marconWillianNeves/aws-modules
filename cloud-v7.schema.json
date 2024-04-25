@@ -1,0 +1,416 @@
+{
+  "$id": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "definitions": {
+      "Syde::SNS::Topic::MODULE": {
+          "additionalProperties": false,
+          "properties": {
+              "Condition": {
+                  "type": "string"
+              },
+              "Properties": {
+                  "additionalProperties": false,
+                  "properties": {
+                      "TopicName": {
+                          "type": "string"
+                      }
+                  },
+                  "type": "object"
+              },
+              "Type": {
+                  "enum": [
+                      "Syde::SNS::Topic::MODULE"
+                  ],
+                  "type": "string"
+              }
+          },
+          "required": [
+              "Type"
+          ],
+          "type": "object"
+      },
+      "Syde::SQS::Queue::MODULE": {
+          "additionalProperties": false,
+          "properties": {
+              "Condition": {
+                  "type": "string"
+              },
+              "Properties": {
+                "type": "object",
+                "properties": {
+                    "PreviewName": {
+                      "type": "object",
+                      "properties": {
+                          "Type": {
+                              "type": "string"
+                          },
+                          "Description": {
+                              "type": "string"
+                          }
+                      },
+                      "required": [
+                          "Type",
+                          "Description"
+                      ],
+                      "description": "Preview Name of SQS."
+                    },
+                    "DelaySeconds": {
+                        "type": "object",
+                        "properties": {
+                            "Type": {
+                                "type": "string"
+                            },
+                            "Description": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "Type",
+                            "Description"
+                        ],
+                        "description": "The time in seconds that the delivery of all messages in the queue is delayed. You can specify an integer value of 0 to 900 (15 minutes)."
+                    },
+                    "MaximumMessageSize": {
+                        "type": "object",
+                        "properties": {
+                            "Type": {
+                                "type": "string"
+                            },
+                            "Description": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "Type",
+                            "Description"
+                        ],
+                        "description": "The limit of how many bytes that a message can contain before Amazon SQS rejects it, 1024 bytes (1 KiB) to 262144 bytes (256 KiB)"
+                    },
+                    "MessageRetentionPeriod": {
+                        "type": "object",
+                        "properties": {
+                            "Type": {
+                                "type": "string"
+                            },
+                            "Description": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "Type",
+                            "Description"
+                        ],
+                        "description": "The number of seconds that Amazon SQS retains a message. You can specify an integer value from 60 seconds (1 minute) to 1209600 seconds (14 days). "
+                    },
+                    "ReceiveMessageWaitTimeSeconds": {
+                        "type": "object",
+                        "properties": {
+                            "Type": {
+                                "type": "string"
+                            },
+                            "Description": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "Type",
+                            "Description"
+                        ],
+                        "description": "Specifies the duration, in seconds, that the ReceiveMessage action call waits until a message is in the queue in order to include it in the response, as opposed to returning an empty response if a message is not yet available. 1 to 20"
+                    },
+                    "UseDeadLetterQueue": {
+                        "type": "object",
+                        "properties": {
+                            "Type": {
+                                "type": "string"
+                            },
+                            "Description": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "Type",
+                            "Description"
+                        ],
+                        "description": "A dead-letter queue is a queue that other (source) queues can target for messages that can't be processed (consumed) successfully. You can set aside and isolate these messages in the dead-letter queue to determine why their processing doesn't succeed."
+                    },
+                    "VisibilityTimeout": {
+                        "type": "object",
+                        "properties": {
+                            "Type": {
+                                "type": "string"
+                            },
+                            "Description": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "Type",
+                            "Description"
+                        ],
+                        "description": "Time in seconds. This should be longer than the time it would take to process and delete a message, this should not exceed 12 hours."
+                    },
+                    "KmsMasterKeyIdForSqs": {
+                        "type": "object",
+                        "properties": {
+                            "Type": {
+                                "type": "string"
+                            },
+                            "Description": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "Type",
+                            "Description"
+                        ],
+                        "description": "(Optional) For unencrypted leave blank. The ID or Alias of an AWS managed or a custom CMK."
+                    },
+                    "SNSTopicToSubscribeArn": {
+                        "type": "object",
+                        "properties": {
+                            "Type": {
+                                "type": "string"
+                            },
+                            "Description": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "Type",
+                            "Description"
+                        ],
+                        "description": "(Optional) When will subscribe on a topic sns, set the arn."
+                    }
+                },
+                "required": [
+                  "PreviewName"
+                ]
+              },
+              "Type": {
+                  "enum": [
+                      "Syde::SQS::Queue::MODULE"
+                  ],
+                  "type": "string"
+              }
+          },
+          "required": [
+              "Type",
+              "Properties"
+          ],
+          "type": "object"
+      },
+      "CustomResource": {
+          "additionalProperties": false,
+          "properties": {
+              "Properties": {
+                  "additionalProperties": true,
+                  "properties": {
+                      "ServiceToken": {
+                          "type": "string"
+                      }
+                  },
+                  "required": [
+                      "ServiceToken"
+                  ],
+                  "type": "object"
+              },
+              "Type": {
+                  "pattern": "^Custom::[a-zA-Z_@-]+$",
+                  "type": "string"
+              }
+          },
+          "required": [
+              "Type",
+              "Properties"
+          ],
+          "type": "object"
+      },
+      "Parameter": {
+          "additionalProperties": false,
+          "properties": {
+              "AllowedPattern": {
+                  "type": "string"
+              },
+              "AllowedValues": {
+                  "type": "array"
+              },
+              "ConstraintDescription": {
+                  "type": "string"
+              },
+              "Default": {
+                  "type": "string"
+              },
+              "Description": {
+                  "type": "string"
+              },
+              "MaxLength": {
+                  "type": "string"
+              },
+              "MaxValue": {
+                  "type": "string"
+              },
+              "MinLength": {
+                  "type": "string"
+              },
+              "MinValue": {
+                  "type": "string"
+              },
+              "NoEcho": {
+                  "type": [
+                      "string",
+                      "boolean"
+                  ]
+              },
+              "Type": {
+                  "enum": [
+                      "String",
+                      "Number",
+                      "List\u003cNumber\u003e",
+                      "CommaDelimitedList",
+                      "AWS::EC2::AvailabilityZone::Name",
+                      "AWS::EC2::Image::Id",
+                      "AWS::EC2::Instance::Id",
+                      "AWS::EC2::KeyPair::KeyName",
+                      "AWS::EC2::SecurityGroup::GroupName",
+                      "AWS::EC2::SecurityGroup::Id",
+                      "AWS::EC2::Subnet::Id",
+                      "AWS::EC2::Volume::Id",
+                      "AWS::EC2::VPC::Id",
+                      "AWS::Route53::HostedZone::Id",
+                      "List\u003cAWS::EC2::AvailabilityZone::Name\u003e",
+                      "List\u003cAWS::EC2::Image::Id\u003e",
+                      "List\u003cAWS::EC2::Instance::Id\u003e",
+                      "List\u003cAWS::EC2::SecurityGroup::GroupName\u003e",
+                      "List\u003cAWS::EC2::SecurityGroup::Id\u003e",
+                      "List\u003cAWS::EC2::Subnet::Id\u003e",
+                      "List\u003cAWS::EC2::Volume::Id\u003e",
+                      "List\u003cAWS::EC2::VPC::Id\u003e",
+                      "List\u003cAWS::Route53::HostedZone::Id\u003e",
+                      "List\u003cString\u003e",
+                      "AWS::SSM::Parameter::Name",
+                      "AWS::SSM::Parameter::Value\u003cString\u003e",
+                      "AWS::SSM::Parameter::Value\u003cList\u003cString\u003e\u003e",
+                      "AWS::SSM::Parameter::Value\u003cCommaDelimitedList\u003e",
+                      "AWS::SSM::Parameter::Value\u003cAWS::EC2::AvailabilityZone::Name\u003e",
+                      "AWS::SSM::Parameter::Value\u003cAWS::EC2::Image::Id\u003e",
+                      "AWS::SSM::Parameter::Value\u003cAWS::EC2::Instance::Id\u003e",
+                      "AWS::SSM::Parameter::Value\u003cAWS::EC2::SecurityGroup::GroupName\u003e",
+                      "AWS::SSM::Parameter::Value\u003cAWS::EC2::SecurityGroup::Id\u003e",
+                      "AWS::SSM::Parameter::Value\u003cAWS::EC2::Subnet::Id\u003e",
+                      "AWS::SSM::Parameter::Value\u003cAWS::EC2::Volume::Id\u003e",
+                      "AWS::SSM::Parameter::Value\u003cAWS::EC2::VPC::Id\u003e",
+                      "AWS::SSM::Parameter::Value\u003cAWS::Route53::HostedZone::Id\u003e",
+                      "AWS::SSM::Parameter::Value\u003cList\u003cAWS::EC2::AvailabilityZone::Name\u003e\u003e",
+                      "AWS::SSM::Parameter::Value\u003cList\u003cAWS::EC2::Image::Id\u003e\u003e",
+                      "AWS::SSM::Parameter::Value\u003cList\u003cAWS::EC2::Instance::Id\u003e\u003e",
+                      "AWS::SSM::Parameter::Value\u003cList\u003cAWS::EC2::SecurityGroup::GroupName\u003e\u003e",
+                      "AWS::SSM::Parameter::Value\u003cList\u003cAWS::EC2::SecurityGroup::Id\u003e\u003e",
+                      "AWS::SSM::Parameter::Value\u003cList\u003cAWS::EC2::Subnet::Id\u003e\u003e",
+                      "AWS::SSM::Parameter::Value\u003cList\u003cAWS::EC2::Volume::Id\u003e\u003e",
+                      "AWS::SSM::Parameter::Value\u003cList\u003cAWS::EC2::VPC::Id\u003e\u003e",
+                      "AWS::SSM::Parameter::Value\u003cList\u003cAWS::Route53::HostedZone::Id\u003e\u003e"
+                  ],
+                  "type": "string"
+              }
+          },
+          "required": [
+              "Type"
+          ],
+          "type": "object"
+      }
+  },
+  "properties": {
+      "AWSTemplateFormatVersion": {
+          "enum": [
+              "2010-09-09"
+          ],
+          "type": "string"
+      },
+      "Conditions": {
+          "additionalProperties": false,
+          "patternProperties": {
+              "^[a-zA-Z0-9]+$": {
+                  "type": "object"
+              }
+          },
+          "type": "object"
+      },
+      "Description": {
+          "description": "Template description",
+          "maxLength": 1024,
+          "type": "string"
+      },
+      "Mappings": {
+          "additionalProperties": false,
+          "patternProperties": {
+              "^[a-zA-Z0-9]+$": {
+                  "type": "object"
+              }
+          },
+          "type": "object"
+      },
+      "Metadata": {
+          "type": "object"
+      },
+      "Outputs": {
+          "additionalProperties": false,
+          "maxProperties": 60,
+          "minProperties": 1,
+          "patternProperties": {
+              "^[a-zA-Z0-9]+$": {
+                  "type": "object"
+              }
+          },
+          "type": "object"
+      },
+      "Parameters": {
+          "additionalProperties": false,
+          "maxProperties": 50,
+          "patternProperties": {
+              "^[a-zA-Z0-9]+$": {
+                  "$ref": "#/definitions/Parameter"
+              }
+          },
+          "type": "object"
+      },
+      "Resources": {
+          "additionalProperties": false,
+          "patternProperties": {
+              "^[a-zA-Z0-9]+$": {
+                  "anyOf": [
+                      {
+                          "$ref": "#/definitions/Syde::SNS::Topic::MODULE"
+                      },
+                      {
+                          "$ref": "#/definitions/Syde::SQS::Queue::MODULE"
+                      },
+                      {
+                          "$ref": "#/definitions/CustomResource"
+                      }
+                  ]
+              }
+          },
+          "type": "object"
+      },
+      "Transform": {
+          "oneOf": [
+              {
+                  "type": [
+                      "string"
+                  ]
+              },
+              {
+                  "items": {
+                      "type": "string"
+                  },
+                  "type": "array"
+              }
+          ]
+      }
+  },
+  "required": [
+      "Resources"
+  ],
+  "type": "object"
+}
