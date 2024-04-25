@@ -1,0 +1,196 @@
+{
+  "$id": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "definitions": {
+    "AWS::SNS::Topic": {
+        "additionalProperties": false,
+        "properties": {
+            "Condition": {
+                "type": "string"
+            },
+            "DeletionPolicy": {
+                "enum": [
+                    "Delete",
+                    "Retain",
+                    "Snapshot"
+                ],
+                "type": "string"
+            },
+            "DependsOn": {
+                "anyOf": [
+                    {
+                        "pattern": "^[a-zA-Z0-9]+$",
+                        "type": "string"
+                    },
+                    {
+                        "items": {
+                            "pattern": "^[a-zA-Z0-9]+$",
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                ]
+            },
+            "Metadata": {
+                "type": "object"
+            },
+            "Properties": {
+                "additionalProperties": false,
+                "properties": {
+                    "ArchivePolicy": {
+                        "type": "object"
+                    },
+                    "ContentBasedDeduplication": {
+                        "type": "boolean"
+                    },
+                    "DataProtectionPolicy": {
+                        "type": "object"
+                    },
+                    "DeliveryStatusLogging": {
+                        "items": {
+                            "$ref": "#/definitions/AWS::SNS::Topic.LoggingConfig"
+                        },
+                        "type": "array"
+                    },
+                    "DisplayName": {
+                        "type": "string"
+                    },
+                    "FifoTopic": {
+                        "type": "boolean"
+                    },
+                    "KmsMasterKeyId": {
+                        "type": "string"
+                    },
+                    "SignatureVersion": {
+                        "type": "string"
+                    },
+                    "Subscription": {
+                        "items": {
+                            "$ref": "#/definitions/AWS::SNS::Topic.Subscription"
+                        },
+                        "type": "array"
+                    },
+                    "Tags": {
+                        "items": {
+                            "$ref": "#/definitions/Tag"
+                        },
+                        "type": "array"
+                    },
+                    "TopicName": {
+                        "type": "string"
+                    },
+                    "TracingConfig": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Type": {
+                "enum": [
+                    "AWS::SNS::Topic"
+                ],
+                "type": "string"
+            },
+            "UpdateReplacePolicy": {
+                "enum": [
+                    "Delete",
+                    "Retain",
+                    "Snapshot"
+                ],
+                "type": "string"
+            }
+        },
+        "required": [
+            "Type"
+        ],
+        "type": "object"
+    }
+  },
+  "properties": {
+      "AWSTemplateFormatVersion": {
+          "enum": [
+              "2010-09-09"
+          ],
+          "type": "string"
+      },
+      "Conditions": {
+          "additionalProperties": false,
+          "patternProperties": {
+              "^[a-zA-Z0-9]+$": {
+                  "type": "object"
+              }
+          },
+          "type": "object"
+      },
+      "Description": {
+          "description": "Template description",
+          "maxLength": 1024,
+          "type": "string"
+      },
+      "Mappings": {
+          "additionalProperties": false,
+          "patternProperties": {
+              "^[a-zA-Z0-9]+$": {
+                  "type": "object"
+              }
+          },
+          "type": "object"
+      },
+      "Metadata": {
+          "type": "object"
+      },
+      "Outputs": {
+          "additionalProperties": false,
+          "maxProperties": 60,
+          "minProperties": 1,
+          "patternProperties": {
+              "^[a-zA-Z0-9]+$": {
+                  "type": "object"
+              }
+          },
+          "type": "object"
+      },
+      "Parameters": {
+          "additionalProperties": false,
+          "maxProperties": 50,
+          "patternProperties": {
+              "^[a-zA-Z0-9]+$": {
+                  "$ref": "#/definitions/Parameter"
+              }
+          },
+          "type": "object"
+      },
+      "Resources": {
+          "additionalProperties": false,
+          "patternProperties": {
+              "^[a-zA-Z0-9]+$": {
+                  "anyOf": [
+                      {
+                          "$ref": "#/definitions/AWS::SNS::Topic"
+                      }
+                  ]
+              }
+          },
+          "type": "object"
+      },
+      "Transform": {
+          "oneOf": [
+              {
+                  "type": [
+                      "string"
+                  ]
+              },
+              {
+                  "items": {
+                      "type": "string"
+                  },
+                  "type": "array"
+              }
+          ]
+      }
+  },
+  "required": [
+      "Resources"
+  ],
+  "type": "object"
+}
